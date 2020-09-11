@@ -9,29 +9,38 @@ app.set("view engine", "ejs");
 
 app.use(layouts);
 
-app.use
-(
+app.use(
     express.urlencoded
     ({
         extended:false
     })
 );
-
 app.use(express.json());
-
 app.use((req, res, next) => 
 {
     console.log(`request made to: ${req.url}`)
     next();
 });
 
-app.get("/", homeController.sendHello);
+app.get("/", homeController.sendHomePage);
+//localhost:8080/
 
 app.post("/", homeController.displayRequest);
 
-app.get("/items/:vegetable", homeController.sendReqParam);
+app.get("/login", homeController.sendLogin);
+//localhost:8080/login
+
+app.get("/useraccount", homeController.sendUserAccount);
+//localhost:8080/useraccount
+
+app.get("/donation", homeController.sendDonation);
+//localhost:8080/donation
 
 app.get("/name/:myName", homeController.respondWithName);
+//localhost:8080/name/whater-name-you-put
+
+app.get("*", homeController.respondWithBadRequest);
+//localhost:8080/anything-not-yet-defined
 
 app.listen(port, () => 
 {
