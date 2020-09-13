@@ -20,10 +20,15 @@ exports.sendDonation = (req, res) =>
 {
     res.send("Donation Page");
 };
+exports.repondWithHomePage = (req, res) => 
+{
+    let paramsName = req.params.myName;
+    res.render("home_screen", {name: paramsName});
+};
 exports.respondWithName = (req, res) => 
 {
     let paramsName = req.params.myName;
-    res.render("index", {name: paramsName});
+    res.render("home_screen", {name: paramsName});
 };
 exports.respondWithBadRequest = (req, res) => 
 {

@@ -28,7 +28,7 @@ app.get("/", homeController.sendHomePage);
 
 app.post("/", homeController.displayRequest);
 
-app.get("/name/login", homeController.sendLogin);
+app.get("/login", homeController.sendLogin);
 //localhost:8080/login
 
 app.get("/useraccount", homeController.sendUserAccount);
@@ -36,6 +36,9 @@ app.get("/useraccount", homeController.sendUserAccount);
 
 app.get("/donation", homeController.sendDonation);
 //localhost:8080/donation
+
+app.get("/home_page/:myName", homeController.repondWithHomePage);
+//localhost:8080/home_page/whater-name-you-put
 
 app.get("/name/:myName", homeController.respondWithName);
 //localhost:8080/name/whater-name-you-put
