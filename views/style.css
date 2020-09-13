@@ -19,13 +19,14 @@ nav{
     display: flex;
     align-items: center;
 }
-.uwf-logo
-{
-    flex-basis: 20%;
-}
 .uwf-logo img 
 {
-    width: 150px;
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: translateY(-50%);
+    z-index: 1;
 }
 .navigation-links 
 {
@@ -49,7 +50,7 @@ nav{
     height: 1000px;
     position: absolute;
     top: 50%;
-    left: 0;
+    left: -10%;
     transform: translateY(-50%);
 }
 #circle
@@ -60,7 +61,8 @@ nav{
     top: 0;
     left: 0;
     border-radius: 50%;
-    background: #ccc;
+    transform: rotate(0deg);
+    transition: 1s;
 }
 .charity-thumbnail img
 {
@@ -69,6 +71,16 @@ nav{
 .charity-thumbnail 
 {
     position: absolute;
+    display: flex;
+    color: #ffffff;
+}
+.charity-thumbnail div 
+{
+    margin-left: 30px;
+}
+.charity-thumbnail div p
+{
+    margin-top: 8px;
 }
 .salvation-army 
 {
@@ -79,14 +91,52 @@ nav{
 {
     top: 150px;
     left: 350px;
+    transform: rotate(-90deg);
 }
 .habitat-for-humanity
 {
     bottom: 450px;
     left: 50px;
+    transform: rotate(-180deg);
 }
 .united-way
 {
     bottom: 150px;
     right: 350px;
+    transform: rotate(-270deg);
+}
+.controls 
+{
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+.controls h3 
+{
+    margin: 15px 0;
+    color: #ffffff;
+}
+#up_button
+{
+    width: 15px;
+    cursor: pointer;
+}
+#down_button
+{
+    width: 15px;
+    cursor: pointer;
+}
+.overlay 
+{
+    width: 0;
+    height: 0;
+    border-top: 500px solid #ffffff;
+    border-right: 500px solid transparent;
+    border-bottom: 500px solid #ffffff;
+    border-left: 500px solid #ffffff;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
