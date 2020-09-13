@@ -23,12 +23,12 @@ exports.sendDonation = (req, res) =>
 exports.repondWithHomePage = (req, res) => 
 {
     let paramsName = req.params.myName;
-    res.render("home_screen", {name: paramsName});
+    res.render("home_page", {name: paramsName});
 };
 exports.respondWithName = (req, res) => 
 {
     let paramsName = req.params.myName;
-    res.render("home_screen", {name: paramsName});
+    res.render("home_page", {name: paramsName});
 };
 exports.respondWithBadRequest = (req, res) => 
 {
