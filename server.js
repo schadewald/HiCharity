@@ -8,6 +8,7 @@ const app = express();
 app.set("view engine", "ejs");
 
 app.use(layouts);
+app.use("/views", express.static("views"));
 
 app.use(
     express.urlencoded
