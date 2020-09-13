@@ -43,3 +43,50 @@ nav{
     color: #ffffff;
     text-decoration: none;
 }
+.charity-preview 
+{
+    width: 1000px;
+    height: 1000px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+#circle
+{
+    width: 1000px;
+    height: 1000px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background: #ccc;
+}
+.charity-thumbnail img
+{
+    width: 70px;
+}
+.charity-thumbnail 
+{
+    position: absolute;
+}
+.salvation-army 
+{
+    top: 450px;
+    right: 50px;
+}
+.feeding-america
+{
+    top: 150px;
+    left: 350px;
+}
+.habitat-for-humanity
+{
+    bottom: 450px;
+    left: 50px;
+}
+.united-way
+{
+    bottom: 150px;
+    right: 350px;
+}
