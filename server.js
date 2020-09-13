@@ -28,7 +28,7 @@ app.get("/", homeController.sendHomePage);
 
 app.post("/", homeController.displayRequest);
 
-app.get("/login", homeController.sendLogin);
+app.get("/name/login", homeController.sendLogin);
 //localhost:8080/login
 
 app.get("/useraccount", homeController.sendUserAccount);
