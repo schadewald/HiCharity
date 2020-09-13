@@ -11,3 +11,35 @@
     overflow: hidden;
     background: linear-gradient(to right, #0000CC, #99CC33);
 }
+nav{
+    width: 80%;
+    position: sticky;
+    margin: 20px auto;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+}
+.uwf-logo
+{
+    flex-basis: 20%;
+}
+.uwf-logo img 
+{
+    width: 150px;
+}
+.navigation-links 
+{
+    flex: 1;
+    text-align: right;
+}
+.navigation-links ul li
+{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+}
+.navigation-links ul li a 
+{
+    color: #ffffff;
+    text-decoration: none;
+}
