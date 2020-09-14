@@ -11,10 +11,10 @@ The Scope of this Project will include local and nationwide charities, and will 
 
 To begin, run npm start to get the server up and running.
 Open an internet browser such as Google Chrome.
-In the web address field, type localHost:8080/ to reach the home page.
-Other addresses such as localHost:8080/login will take you to the login page,
-localHost:8080/useraccount will take you to the user account page,
-localHost:8080/donation will take you to the donation page.
+In the web address field, type localHost:8080/home_page/name to reach the home page.
+In the name field you can enter whatever name you want and it will be displayed.
+From the home page you can navigate through several charities with the up and down arrow buttons.
+You can also reach the Login Page from the login button.
 
 All pages are basic text placeholders until further development.
 
