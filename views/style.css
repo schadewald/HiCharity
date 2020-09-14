@@ -32,6 +32,7 @@ nav{
 {
     flex: 1;
     text-align: right;
+    position:relative;
 }
 .navigation-links ul li
 {
@@ -139,4 +140,78 @@ nav{
     position: absolute;
     left: 0;
     top: 0;
+}
+
+
+.login-main 
+{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-color: #40558D;
+}
+
+.top-bar
+{
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    height: 75px
+}
+
+.website-emblem img
+{
+    width: 50px;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.login-form
+{
+    position: relative;
+    top: 20px;
+    left: 30%;
+    width: 40%;
+    background-color: #fff;
+    border: 2px solid #444
+}
+
+.form-group
+{
+    padding-bottom: 15px;
+}
+
+.form-group label
+{
+    padding-right: 5px;
+}
+
+.login-form input[type="text"]
+{
+    margin-left: 5%;
+    margin-right: 50%;
+}
+
+.login-form input[type="submit"]
+{
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+
+.login-footer
+{
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 75px;
+    text-align: center;
+}
+
+.login-footer p
+{
+    position: relative;
+    top: 40px;
 }

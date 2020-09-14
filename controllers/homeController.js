@@ -10,7 +10,8 @@ exports.displayRequest = (req, res) =>
 };
 exports.sendLogin = (req, res) => 
 {
-    res.send("Login Page");
+    //let testParam = "TEST_PARAM";
+    res.render("loginPage", {name: ""}); // empty string passed to name param in layout.ejs, preventing a header/footer from loading
 };
 exports.sendUserAccount = (req, res) => 
 {
@@ -28,4 +29,11 @@ exports.respondWithName = (req, res) =>
 exports.respondWithBadRequest = (req, res) => 
 {
     res.send("Error");
+};
+
+exports.authenticateLoginInfo = (req, res) =>
+{
+    console.log(req.body);
+    console.log(req.query);
+    res.send(`Login attempt: <br> Username: ${req.body.username} <br> Password: ${req.body.password}`);
 };
