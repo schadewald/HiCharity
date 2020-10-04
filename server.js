@@ -1,7 +1,7 @@
 const port = 8080;
-express = require("express");
-layouts = require("express-ejs-layouts");
-homeController = require("./controllers/homeController");
+let express = require("express");
+let layouts = require("express-ejs-layouts");
+let homeController = require("./controllers/homeController");
 
 const app = express();
 
