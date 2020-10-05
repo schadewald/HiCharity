@@ -6,16 +6,9 @@ let homeController = require("./controllers/homeController");
 const app = express();
 
 app.set("view engine", "ejs");
-
 app.use(layouts);
 app.use("/views", express.static("views"));
-
-app.use(
-    express.urlencoded
-    ({
-        extended:false
-    })
-);
+app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.use((req, res, next) => 
 {
