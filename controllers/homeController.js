@@ -1,3 +1,5 @@
+//Testing DB Operations
+
 const mongoose = require("mongoose");
 mongoose.connect(
     "mongodb://localhost:27017/group7_db",
@@ -15,19 +17,9 @@ const userDonationSchema = mongoose.Schema(
     amount: Number
 });
 const Donation = mongoose.model("userdonation", userDonationSchema);
-// MongoDB.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
-// MongoDB.connect(dbURL, (error, client) => 
-// {
-//     if (error) throw error;
-//     let db = client.db(dbName);
-//     db.collection("userdonation")
-//         .find()
-//         .toArray((error, data) => 
-//         {
-//             if (error) throw error;
-//             console.log(data);
-//         });
-// });
+
+//Testing DB Operations
+
 exports.sendHomePage = (req, res) => 
 {
     res.send("Home Page");
@@ -84,24 +76,6 @@ exports.authenticateLoginInfo = (req, res) =>
             if (error) console.log(error);
             console.log(savedDocument);
         });
-    // MongoDB.connect(dbURL, (error, client) => 
-    // {
-    //     if (error) throw error;
-    //     let db = client.db(dbName);
-    //     db.collection("userdonation")
-    //         .find()
-    //         .toArray((error, data) => 
-    //         {
-    //             if (error) throw error;
-    //             console.log(data);
-    //         });
-    //     db.collection("userdonation").insert({username: req.body.username, userid: req.body.password, amount: "69.00"},
-    //         (error, db) => 
-    //         {
-    //             if (error) throw error;
-    //             console.log(db);
-    //         });
-    // });
 
     //Testing DB Operations
 
