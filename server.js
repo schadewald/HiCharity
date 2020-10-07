@@ -1,23 +1,23 @@
 const port = 8080;
-const MongoDB = require("mongodb").MongoClient,
-    dbURL = "mongodb://localhost:27017",
-    dbName = "group7_db";
+// const MongoDB = require("mongodb").MongoClient,
+//     dbURL = "mongodb://localhost:27017",
+//     dbName = "group7_db";
 let express = require("express");
 let layouts = require("express-ejs-layouts");
 let homeController = require("./controllers/homeController");
 //Testing MongoDB
-MongoDB.connect(dbURL, (error, client) => 
-{
-    if (error) throw error;
-    let db = client.db(dbName);
-    db.collection("userdonation")
-        .find()
-        .toArray((error, data) => 
-        {
-            if (error) throw error;
-            console.log(data);
-        });
-});
+// MongoDB.connect(dbURL, (error, client) => 
+// {
+//     if (error) throw error;
+//     let db = client.db(dbName);
+//     db.collection("userdonation")
+//         .find()
+//         .toArray((error, data) => 
+//         {
+//             if (error) throw error;
+//             console.log(data);
+//         });
+// });
 //Testing MongoDB
 const app = express();
 
@@ -37,9 +37,11 @@ app.get("/", homeController.sendHomePage);
 
 app.post("/", homeController.displayRequest);
 
-app.post("/login", homeController.authenticateLoginInfo)
+app.post("/login", homeController.authenticateLoginInfo);
 
 app.get("/login", homeController.sendLogin);
+//Somehow send MongoDB to homeController also.
+
 //localhost:8080/login
 
 app.get("/useraccount", homeController.sendUserAccount);
