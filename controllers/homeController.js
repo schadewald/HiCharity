@@ -3,20 +3,14 @@
 const mongoose = require("mongoose");
 mongoose.connect(
     "mongodb://localhost:27017/group7_db",
-    {useNewUrlParser: true}
+    {useNewUrlParser: true, useUnifiedTopology: true}
 );
 const db = mongoose.connection;
 db.once("open", () =>
 {
     console.log("Successfully Connected to Database!")
 });
-const userDonationSchema = mongoose.Schema(
-{
-    username: String,
-    userid: String,
-    amount: Number
-});
-const Donation = mongoose.model("userdonation", userDonationSchema);
+const Donation = require("../models/userDonation");
 
 //Testing DB Operations
 
