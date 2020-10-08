@@ -1,41 +1,5 @@
 //Testing DB Operations
 
-// const { MongoClient } = require("mongodb");
-// const url = "mongodb+srv://group7:group7@cluster0.28kdv.gcp.mongodb.net/test?retryWrites=true&w=majority";
-// const client = new MongoClient(url);
-// const dbName = "test";
-// async function run() 
-// {
-//     try 
-//     {
-//         await client.connect();
-//         console.log("Connected Correctly to Server");
-//         const db = client.db(dbName);
-
-//         const col = db.collection("people");
-//         let personDocument = 
-//         {
-//             "name": { "first": "Alan", "last": "Turing"},
-//             "birth": new Date(1912, 5, 23),
-//             "death": new Date(1954, 5, 7),
-//             "contribs": ["Turing Maching", "Turing Test", "Turingery"],
-//             "views": 1250000
-//         }
-//         const p = await col.insertOne(personDocument);
-//         const myDoc = await col.findOne();
-//         console.log(myDoc);
-//     }
-//     catch (err) 
-//     {
-//         console.log(err.stack);
-//     }
-//     finally 
-//     {
-//         await client.close();
-//     }
-// }
-// run().catch(console.dir);
-
 const mongoose = require("mongoose");
 mongoose.connect(
     "mongodb+srv://group7:group7@cluster0.28kdv.gcp.mongodb.net/test?retryWrites=true&w=majority",
@@ -90,8 +54,8 @@ exports.respondWithBadRequest = (req, res) =>
 
 exports.authenticateLoginInfo = (req, res) =>
 {
-    console.log(req.body);
-    console.log(req.query);
+    //console.log(req.body);
+    //console.log(req.query);
 
     //Testing DB Operations
     
@@ -101,9 +65,11 @@ exports.authenticateLoginInfo = (req, res) =>
             userid: req.body.password,
             amount: 69.00
         },
-        function (error, savedDocument) 
+        //Print data entered to console, or error
+        function (error, savedDocument)
         {
             if (error) console.log(error);
+            console.log("Successfully Entered New Data:");
             console.log(savedDocument);
         });
 
