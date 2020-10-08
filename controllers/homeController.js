@@ -1,52 +1,52 @@
 //Testing DB Operations
 
-const { MongoClient } = require("mongodb");
-const url = "mongodb+srv://group7:group7@cluster0.28kdv.gcp.mongodb.net/test";
-const client = new MongoClient(url);
-const dbName = "test";
-async function run() 
-{
-    try 
-    {
-        await client.connect();
-        console.log("Connected Correctly to Server");
-        const db = client.db(dbName);
-
-        const col = db.collection("people");
-        let personDocument = 
-        {
-            "name": { "first": "Alan", "last": "Turing"},
-            "birth": new Date(1912, 5, 23),
-            "death": new Date(1954, 5, 7),
-            "contribs": ["Turing Maching", "Turing Test", "Turingery"],
-            "views": 1250000
-        }
-        const p = await col.insertOne(personDocument);
-        const myDoc = await col.findOne();
-        console.log(myDoc);
-    }
-    catch (err) 
-    {
-        console.log(err.stack);
-    }
-    finally 
-    {
-        await client.close();
-    }
-}
-run().catch(console.dir);
-
-// const mongoose = require("mongoose");
-// mongoose.connect(
-//     "mongodb://localhost:27017/group7_db",
-//     {useNewUrlParser: true, useUnifiedTopology: true}
-// );
-// const db = mongoose.connection;
-// db.once("open", () =>
+// const { MongoClient } = require("mongodb");
+// const url = "mongodb+srv://group7:group7@cluster0.28kdv.gcp.mongodb.net/test?retryWrites=true&w=majority";
+// const client = new MongoClient(url);
+// const dbName = "test";
+// async function run() 
 // {
-//     console.log("Successfully Connected to Database!")
-// });
-// const Donation = require("../models/userDonation");
+//     try 
+//     {
+//         await client.connect();
+//         console.log("Connected Correctly to Server");
+//         const db = client.db(dbName);
+
+//         const col = db.collection("people");
+//         let personDocument = 
+//         {
+//             "name": { "first": "Alan", "last": "Turing"},
+//             "birth": new Date(1912, 5, 23),
+//             "death": new Date(1954, 5, 7),
+//             "contribs": ["Turing Maching", "Turing Test", "Turingery"],
+//             "views": 1250000
+//         }
+//         const p = await col.insertOne(personDocument);
+//         const myDoc = await col.findOne();
+//         console.log(myDoc);
+//     }
+//     catch (err) 
+//     {
+//         console.log(err.stack);
+//     }
+//     finally 
+//     {
+//         await client.close();
+//     }
+// }
+// run().catch(console.dir);
+
+const mongoose = require("mongoose");
+mongoose.connect(
+    "mongodb+srv://group7:group7@cluster0.28kdv.gcp.mongodb.net/test?retryWrites=true&w=majority",
+    {useNewUrlParser: true, useUnifiedTopology: true}
+);
+const db = mongoose.connection;
+db.once("open", () =>
+{
+    console.log("Successfully Connected to Database!")
+});
+const Donation = require("../models/userDonation");
 
 //Testing DB Operations
 
@@ -95,17 +95,17 @@ exports.authenticateLoginInfo = (req, res) =>
 
     //Testing DB Operations
     
-    // Donation.create(
-    //     {
-    //         username: req.body.username,
-    //         userid: req.body.password,
-    //         amount: 69.00
-    //     },
-    //     function (error, savedDocument) 
-    //     {
-    //         if (error) console.log(error);
-    //         console.log(savedDocument);
-    //     });
+    Donation.create(
+        {
+            username: req.body.username,
+            userid: req.body.password,
+            amount: 69.00
+        },
+        function (error, savedDocument) 
+        {
+            if (error) console.log(error);
+            console.log(savedDocument);
+        });
 
     //Testing DB Operations
 
