@@ -5,7 +5,7 @@ const port = 8080;
 let express = require("express");
 let layouts = require("express-ejs-layouts");
 let homeController = require("./controllers/homeController");
-const userDonationsController = require("./controllers/userDonationsController");
+let userDonationsController = require("./controllers/userDonationsController");
 
 //Testing MongoDB
 // MongoDB.connect(dbURL, (error, client) => 
@@ -65,7 +65,6 @@ app.get("/userdonation", userDonationsController.getAllDonations,
     });
 app.get("*", homeController.respondWithBadRequest);
 //localhost:8080/anything-not-yet-defined
-
 app.listen(port, () => 
 {
     console.log("Server is now using express.");
