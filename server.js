@@ -42,7 +42,8 @@ app.get("/user", userController.getAllUsers,
     (req, res, next) => 
     {
         console.log(req.data);
-        res.render("new_user", {newUser: req.data});
+        res.render("user", {user: req.data});
+        // res.render("new_user", {newUser: req.data});
 });
 //localhost:8080/user
 

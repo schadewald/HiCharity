@@ -9,7 +9,6 @@ db.once("open", () =>
     console.log("Successfully Connected to Database!")
 });
 const User = require("../models/user");
-const NewUser = require("../models/newUser");
 //const Donation = require("../models/userDonation");
 
 exports.sendHomePage = (req, res) => 
@@ -56,7 +55,7 @@ exports.authenticateLoginInfo = (req, res) =>
 
     //Testing DB Operations
 
-    NewUser.create(
+    User.create(
         {
             name: 
             {
