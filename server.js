@@ -23,10 +23,10 @@ router.get("/", homeController.sendHomePage);
 
 router.post("/", homeController.displayRequest);
 
-router.post("/login", homeController.authenticateLoginInfo);
+// router.post("/login", homeController.authenticateLoginInfo);
 
-router.get("/login", homeController.sendLogin);
-//localhost:8080/login
+// router.get("/login", homeController.sendLogin);
+// //localhost:8080/login
 
 router.get("/useraccount", homeController.sendUserAccount);
 //localhost:8080/useraccount
@@ -40,12 +40,12 @@ router.get("/home_page/:myName", homeController.repondWithHomePage);
 router.get("/name/:myName", homeController.respondWithName);
 //localhost:8080/name/whater-name-you-put
 
-router.get("/user", userController.index, userController.indexView);
+router.get("/userList", userController.index, userController.indexView);
 //localhost:8080/user
 
-router.get("/user/new", userController.new);
+router.get("/login", userController.new);
 
-router.post("/users/create", userController.create, userController.redirectView);
+router.post("/login", userController.create, userController.redirectView);
 
 router.get("*", homeController.respondWithBadRequest);
 //localhost:8080/anything-not-yet-defined

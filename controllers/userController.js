@@ -1,5 +1,7 @@
 // const { create } = require("../models/user");
 const User = require("../models/user");
+const mongoose = require("mongoose");
+mongoose.set("useCreateIndex", true);
 
 module.exports = 
 {
@@ -17,13 +19,13 @@ module.exports =
                 last: req.body.last
             },
             email: req.body.email,
-            userid: req.body.userid,
+            userid: Math.floor(Math.random() * 1000000),
             password: req.body.password
         };
         User.create(userParams)
             .then(user => 
                 {
-                    res.locals.redirect = "/user";
+                    res.locals.redirect = "/userList";
                     res.locals.user = user;
                     next();
                 })

@@ -54,18 +54,18 @@ module.exports =
     {
     //Testing DB Operations
 
-    User.create(
-        {
-            name: 
-            {
-                first: req.body.username,
-                last: "TestLastName"
-            },
-            // email: "testemail@gmail.com",
-            userid: Math.floor(Math.random() * 1000000),
-            password: req.body.password
-        })
-        .catch(error => console.log(error.message));
+    // User.create(
+    //     {
+    //         name: 
+    //         {
+    //             first: req.body.username,
+    //             last: "TestLastName"
+    //         },
+    //         // email: "testemail@gmail.com",
+    //         userid: Math.floor(Math.random() * 1000000),
+    //         password: req.body.password
+    //     })
+    //     .catch(error => console.log(error.message));
 
     //Testing DB Operations
 
