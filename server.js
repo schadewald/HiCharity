@@ -5,7 +5,7 @@ const port = 8080;
 let express = require("express");
 let layouts = require("express-ejs-layouts");
 let homeController = require("./controllers/homeController");
-let userDonationsController = require("./controllers/userDonationsController");
+let userController = require("./controllers/userController");
 
 //Testing MongoDB
 // MongoDB.connect(dbURL, (error, client) => 
@@ -57,11 +57,11 @@ app.get("/home_page/:myName", homeController.repondWithHomePage);
 
 app.get("/name/:myName", homeController.respondWithName);
 //localhost:8080/name/whater-name-you-put
-app.get("/userdonation", userDonationsController.getAllDonations,
+app.get("/user", userController.getAllDonations,
     (req, res, next) => 
     {
         console.log(req.data);
-        res.render("user_donations", {user_donations: req.data});
+        res.render("user", {user: req.data});
     });
 app.get("*", homeController.respondWithBadRequest);
 //localhost:8080/anything-not-yet-defined

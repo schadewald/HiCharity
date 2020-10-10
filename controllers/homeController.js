@@ -10,7 +10,8 @@ db.once("open", () =>
 {
     console.log("Successfully Connected to Database!")
 });
-const Donation = require("../models/userDonation");
+const User = require("../models/user");
+//const Donation = require("../models/userDonation");
 
 //Testing DB Operations
 
@@ -58,20 +59,33 @@ exports.authenticateLoginInfo = (req, res) =>
     //console.log(req.query);
 
     //Testing DB Operations
-    
-    Donation.create(
+
+    User.create(
         {
             username: req.body.username,
-            userid: req.body.password,
-            amount: 69.00
+            password: req.body.password,
+            userid: Math.floor(Math.random() * 10001)
         },
-        //Print data entered to console, or error
         function (error, savedDocument)
         {
             if (error) console.log(error);
             console.log("Successfully Entered New Data:");
             console.log(savedDocument);
         });
+    
+    // Donation.create(
+    //     {
+    //         username: req.body.username,
+    //         userid: req.body.password,
+    //         amount: 69.00
+    //     },
+    //     //Print data entered to console, or error
+    //     function (error, savedDocument)
+    //     {
+    //         if (error) console.log(error);
+    //         console.log("Successfully Entered New Data:");
+    //         console.log(savedDocument);
+    //     });
 
     //Testing DB Operations
 
