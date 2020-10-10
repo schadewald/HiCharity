@@ -1,8 +1,9 @@
 const User = require("../models/user");
+const NewUser = require("../models/newUser");
 
 exports.getAllUsers = (req, res, next) => 
 {
-    User.find( {}, (error, users) => 
+    NewUser.find( {}, (error, users) => 
     {
         if (error) next(error);
         req.data = users;

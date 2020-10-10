@@ -15,13 +15,13 @@ const mongoose = require("mongoose"),
                     trim: true
                 }
             },
-            email: 
-            {
-                type: String,
-                required: true,
-                lowercase: true,
-                unique: true
-            },
+            // email: 
+            // {
+            //     type: String,
+            //     required: true,
+            //     lowercase: true,
+            //     unique: true
+            // },
             userid: 
             {
                 type: Number,
@@ -30,7 +30,7 @@ const mongoose = require("mongoose"),
             },
             password: 
             {
-                trype: String,
+                type: String,
                 required: true
             },
             users: [{type: Schema.Types.ObjectId, ref: "user"}],
@@ -39,3 +39,8 @@ const mongoose = require("mongoose"),
         {
             timestamps: true
         });
+newUserSchema.virtual("fullName").get(function() 
+{
+    return `${this.name.first} ${this.name.last}`;
+});
+module.exports = mongoose.model("newUser", newUserSchema);
