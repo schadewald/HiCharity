@@ -38,7 +38,7 @@ app.get("/home_page/:myName", homeController.repondWithHomePage);
 app.get("/name/:myName", homeController.respondWithName);
 //localhost:8080/name/whater-name-you-put
 
-app.get("/user", userController.index);
+app.get("/user", userController.index, userController.indexView);
 //localhost:8080/user
 
 app.get("*", homeController.respondWithBadRequest);
