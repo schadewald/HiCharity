@@ -4,6 +4,7 @@ let layouts = require("express-ejs-layouts");
 let homeController = require("./controllers/homeController");
 let userController = require("./controllers/userController");
 const app = express();
+const router = express.Router();
 
 app.set("view engine", "ejs");
 app.use(layouts);
@@ -15,33 +16,38 @@ app.use((req, res, next) =>
     console.log(`request made to: ${req.url}`)
     next();
 });
+app.use("/", router);
 
-app.get("/", homeController.sendHomePage);
+router.get("/", homeController.sendHomePage);
 //localhost:8080/
 
-app.post("/", homeController.displayRequest);
+router.post("/", homeController.displayRequest);
 
-app.post("/login", homeController.authenticateLoginInfo);
+router.post("/login", homeController.authenticateLoginInfo);
 
-app.get("/login", homeController.sendLogin);
+router.get("/login", homeController.sendLogin);
 //localhost:8080/login
 
-app.get("/useraccount", homeController.sendUserAccount);
+router.get("/useraccount", homeController.sendUserAccount);
 //localhost:8080/useraccount
 
-app.get("/donation", homeController.sendDonation);
+router.get("/donation", homeController.sendDonation);
 //localhost:8080/donation
 
-app.get("/home_page/:myName", homeController.repondWithHomePage);
+router.get("/home_page/:myName", homeController.repondWithHomePage);
 //localhost:8080/home_page/whater-name-you-put
 
-app.get("/name/:myName", homeController.respondWithName);
+router.get("/name/:myName", homeController.respondWithName);
 //localhost:8080/name/whater-name-you-put
 
-app.get("/user", userController.index, userController.indexView);
+router.get("/user", userController.index, userController.indexView);
 //localhost:8080/user
 
-app.get("*", homeController.respondWithBadRequest);
+router.get("/user/new", userController.new);
+
+router.post("/users/create", userController.create, userController.redirectView);
+
+router.get("*", homeController.respondWithBadRequest);
 //localhost:8080/anything-not-yet-defined
 
 app.listen(port, () => 

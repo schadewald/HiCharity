@@ -15,13 +15,13 @@ const mongoose = require("mongoose"),
                     trim: true
                 }
             },
-            // email: 
-            // {
-            //     type: String,
-            //     required: true,
-            //     lowercase: true,
-            //     unique: true
-            // },
+            email: 
+            {
+                type: String,
+                required: true,
+                lowercase: true,
+                unique: true
+            },
             userid: 
             {
                 type: Number,
