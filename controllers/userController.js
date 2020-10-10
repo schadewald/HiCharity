@@ -1,11 +1,14 @@
 const User = require("../models/user");
 
-exports.getAllUsers = (req, res, next) => 
+module.exports = 
 {
-    User.find( {}, (error, users) => 
+    getAllUsers: (req, res, next) =>
     {
-        if (error) next(error);
-        req.data = users;
-        next();
-    });
+        User.find( {}, (error, users) => 
+        {
+            if (error) next(error);
+            req.data = users;
+            next();
+        });
+    }
 };

@@ -52,9 +52,6 @@ module.exports =
     },
     authenticateLoginInfo: (req, res) =>
     {
-    //console.log(req.body);
-    //console.log(req.query);
-
     //Testing DB Operations
 
     User.create(
@@ -69,19 +66,6 @@ module.exports =
             password: req.body.password
         })
         .catch(error => console.log(error.message));
-
-    // User.create(
-    //     {
-    //         username: req.body.username,
-    //         password: req.body.password,
-    //         userid: Math.floor(Math.random() * 10001)
-    //     },
-    //     function (error, savedDocument)
-    //     {
-    //         if (error) console.log(error);
-    //         console.log("Successfully Entered New Data:");
-    //         console.log(savedDocument);
-    //     });
 
     //Testing DB Operations
 
