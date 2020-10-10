@@ -61,9 +61,8 @@ app.get("/userdonation", userDonationsController.getAllDonations,
     (req, res, next) => 
     {
         console.log(req.data);
-        res.send(req.data);
-    })
-
+        res.render("user_donations", {user_donations: req.data});
+    });
 app.get("*", homeController.respondWithBadRequest);
 //localhost:8080/anything-not-yet-defined
 
