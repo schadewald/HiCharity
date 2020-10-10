@@ -39,12 +39,6 @@ app.get("/name/:myName", homeController.respondWithName);
 //localhost:8080/name/whater-name-you-put
 
 app.get("/user", userController.index);
-//     (req, res, next) => 
-//     {
-//         console.log(req.data);
-//         res.render("user", {user: req.data});
-//         // res.render("new_user", {newUser: req.data});
-// });
 //localhost:8080/user
 
 app.get("*", homeController.respondWithBadRequest);
