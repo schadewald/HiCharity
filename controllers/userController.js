@@ -1,11 +1,11 @@
-const Donation = require("../models/userDonation");
+const User = require("../models/user");
 
-exports.getAllDonations = (req, res, next) => 
+exports.getAllUsers = (req, res, next) => 
 {
-    Donation.find( {}, (error, donations) => 
+    User.find( {}, (error, users) => 
     {
         if (error) next(error);
-        req.data = donations;
+        req.data = users;
         next();
     });
 };

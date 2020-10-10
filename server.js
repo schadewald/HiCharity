@@ -21,6 +21,7 @@ let userController = require("./controllers/userController");
 //         });
 // });
 //Testing MongoDB
+
 const app = express();
 
 app.set("view engine", "ejs");
@@ -57,7 +58,7 @@ app.get("/home_page/:myName", homeController.repondWithHomePage);
 
 app.get("/name/:myName", homeController.respondWithName);
 //localhost:8080/name/whater-name-you-put
-app.get("/user", userController.getAllDonations,
+app.get("/user", userController.getAllUsers,
     (req, res, next) => 
     {
         console.log(req.data);
