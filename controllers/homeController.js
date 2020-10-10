@@ -1,5 +1,3 @@
-//Testing DB Operations
-
 const mongoose = require("mongoose");
 mongoose.connect(
     "mongodb+srv://group7:group7@cluster0.28kdv.gcp.mongodb.net/test?retryWrites=true&w=majority",
@@ -12,8 +10,6 @@ db.once("open", () =>
 });
 const User = require("../models/user");
 //const Donation = require("../models/userDonation");
-
-//Testing DB Operations
 
 exports.sendHomePage = (req, res) => 
 {
@@ -52,7 +48,6 @@ exports.respondWithBadRequest = (req, res) =>
 {
     res.send("Error");
 };
-
 exports.authenticateLoginInfo = (req, res) =>
 {
     //console.log(req.body);
@@ -72,20 +67,6 @@ exports.authenticateLoginInfo = (req, res) =>
             console.log("Successfully Entered New Data:");
             console.log(savedDocument);
         });
-    
-    // Donation.create(
-    //     {
-    //         username: req.body.username,
-    //         userid: req.body.password,
-    //         amount: 69.00
-    //     },
-    //     //Print data entered to console, or error
-    //     function (error, savedDocument)
-    //     {
-    //         if (error) console.log(error);
-    //         console.log("Successfully Entered New Data:");
-    //         console.log(savedDocument);
-    //     });
 
     //Testing DB Operations
 
