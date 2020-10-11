@@ -2,8 +2,8 @@
 <table class="table">
     <thread>
         <tr>
-            <th>Name</th>
             <th>UserID</th>
+            <th>Name</th>
             <th>Email</th>
             <th>Password</th>
         </tr>
@@ -12,8 +12,12 @@
         <% users.forEach(user => 
         { %>
             <tr>
-                <td><%= user.fullName %></td>
                 <td><%= user.userid %></td>
+                <td>
+                    <a href="<%= `/users/${user._id}` %>">
+                        <%= user.fullName %>
+                    </a>
+                </td>
                 <td><%= user.email %></td>
                 <td><%= user.password %></td>
             </tr>

@@ -58,5 +58,24 @@ module.exports =
     indexView: (req, res) => 
     {
         res.render("users/index");
+    },
+    show: (req, res, next) => 
+    {
+        let userId = req.params.id;
+        User.findById(userId)
+            .then(user => 
+                {
+                    res.locals.user = user;
+                    next();
+                })
+            .catch(error => 
+                {
+                    console.log(`Error fetching user by ID: ${erro.message}`);
+                    next();
+                });
+    },
+    showView: (req, res) => 
+    {
+        res.render("users/show");
     }
 };

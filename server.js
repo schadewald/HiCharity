@@ -47,6 +47,8 @@ router.get("/login", userController.new);
 
 router.post("/login", userController.create, userController.redirectView);
 
+router.get("/users/:id", userController.show, userController.showView);
+
 router.get("*", homeController.respondWithBadRequest);
 //localhost:8080/anything-not-yet-defined
 
