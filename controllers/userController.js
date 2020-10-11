@@ -1,3 +1,4 @@
+const httpStatus = require("http-status-codes");
 const User = require("../models/user");
 const mongoose = require("mongoose");
 mongoose.set("useCreateIndex", true);
@@ -123,5 +124,31 @@ module.exports =
     showView: (req, res) => 
     {
         res.render("users/show");
+    },
+    respondJSON: (req, res) =>
+    {
+        res.json({
+            status: httpStatus.OK,
+            data: res.locals
+        });
+    },
+    errorJSON: (error, req, res, next) =>
+    {
+        let errorObject;
+
+        if (error)
+        {
+            errorObject = {
+                status: httpStatus.INTERNAL_SERVER_ERROR,
+                message: error.message
+            };
+        }
+        else
+        {
+            errorObject = {
+                status: httpStatus.INTERNAL_SERVER_ERROR,
+                message: "Unknown error!"
+            };
+        }
     }
 };
