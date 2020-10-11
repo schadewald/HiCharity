@@ -15,7 +15,7 @@ module.exports =
 {
     sendHomePage: (req, res) => 
     {
-    res.send("Home Page");
+        res.render("home_page", {name: "new user"});
     },
     displayRequest: (req, res) => 
     {  

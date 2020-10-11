@@ -25,7 +25,7 @@ module.exports =
         User.create(userParams)
             .then(user => 
                 {
-                    res.locals.redirect = "/userList";
+                    res.locals.redirect = "/user/userList";
                     res.locals.user = user;
                     next();
                 })
