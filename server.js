@@ -5,7 +5,12 @@ let homeController = require("./controllers/homeController");
 let userController = require("./controllers/userController");
 const app = express();
 const router = express.Router();
+const methodOverride = require("method-override");
 
+router.use(methodOverride("_method", 
+{
+    methods: ["POST", "GET"]
+}));
 app.set("view engine", "ejs");
 app.use(layouts);
 app.use("/views", express.static("views"));
@@ -48,6 +53,10 @@ router.get("/login", userController.new);
 router.post("/login", userController.create, userController.redirectView);
 
 router.get("/users/:id", userController.show, userController.showView);
+
+router.get("/users/:id/edit", userController.edit);
+
+router.put("/users/:id/update", userController.update, userController.redirectView);
 
 router.get("*", homeController.respondWithBadRequest);
 //localhost:8080/anything-not-yet-defined
