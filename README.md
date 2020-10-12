@@ -12,10 +12,13 @@ The Scope of this Project will include local and nationwide charities, and will 
 To begin, run npm start to get the server up and running.
 Open an internet browser such as Google Chrome.
 In the web address field, type localHost:8080/home_page/name to reach the home page.
-In the name field you can enter whatever name you want and it will be displayed.
 From the home page you can navigate through several charities with the up and down arrow buttons.
 You can also reach the Login Page from the login button.
+On the Login Page, you are given the option to become a new user by entering your First and Last name, email address, and password.
+You must enter a valid email address and password in order to progress to the next screen.
+Upon succesfull creation of a new user, you are displayed a table of current users.
+From this current users table, you are able to Edit user info by clicking the Edit button.
 
-All pages are basic text placeholders until further development.
+All pages are basic, and subject to change upon further development.
 
 Run ^C to shut the server down.
