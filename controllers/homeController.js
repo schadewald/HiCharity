@@ -13,10 +13,6 @@ const User = require("../models/user");
 
 module.exports = 
 {
-    sendHomePage: (req, res) => 
-    {
-    res.send("Home Page");
-    },
     displayRequest: (req, res) => 
     {  
     console.log(req.body);
@@ -25,8 +21,7 @@ module.exports =
     },
     sendLogin: (req, res) => 
     {
-    //let testParam = "TEST_PARAM";
-    res.render("loginPage", {name: ""}); // empty string passed to name param in layout.ejs, preventing a header/footer from loading
+    res.render("loginPage", {name: ""});
     },
     sendUserAccount: (req, res) => 
     {
@@ -38,8 +33,7 @@ module.exports =
     },
     repondWithHomePage: (req, res) => 
     {
-    let paramsName = req.params.myName;
-    res.render("home_page", {name: paramsName});
+    res.render("home_page");
     },
     respondWithName: (req, res) => 
     {
@@ -52,23 +46,6 @@ module.exports =
     },
     authenticateLoginInfo: (req, res) =>
     {
-    //Testing DB Operations
-
-    // User.create(
-    //     {
-    //         name: 
-    //         {
-    //             first: req.body.username,
-    //             last: "TestLastName"
-    //         },
-    //         // email: "testemail@gmail.com",
-    //         userid: Math.floor(Math.random() * 1000000),
-    //         password: req.body.password
-    //     })
-    //     .catch(error => console.log(error.message));
-
-    //Testing DB Operations
-
     res.send(`Login attempt: <br> Username: ${req.body.username} <br> Password: ${req.body.password}`);
     }
 };

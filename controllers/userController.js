@@ -8,6 +8,10 @@ module.exports =
     { 
     res.render("users/new_user");
     },
+    login: (req, res) => 
+    {
+    res.render("users/login_user");
+    },
     create: (req, res, next) => 
     {
         let userParams = 

@@ -23,24 +23,10 @@ app.use((req, res, next) =>
 });
 app.use("/", router);
 
-router.get("/", homeController.sendHomePage);
+router.get("/", homeController.repondWithHomePage);
 //localhost:8080/
 
 router.post("/", homeController.displayRequest);
-
-// router.post("/login", homeController.authenticateLoginInfo);
-
-// router.get("/login", homeController.sendLogin);
-// //localhost:8080/login
-
-router.get("/useraccount", homeController.sendUserAccount);
-//localhost:8080/useraccount
-
-router.get("/donation", homeController.sendDonation);
-//localhost:8080/donation
-
-router.get("/home_page/:myName", homeController.repondWithHomePage);
-//localhost:8080/home_page/whater-name-you-put
 
 router.get("/name/:myName", homeController.respondWithName);
 //localhost:8080/name/whater-name-you-put
@@ -48,7 +34,9 @@ router.get("/name/:myName", homeController.respondWithName);
 router.get("/userList", userController.index, userController.indexView);
 //localhost:8080/user
 
-router.get("/login", userController.new);
+router.get("/newuser", userController.new);
+
+router.get("/login", userController.login);
 
 router.post("/login", userController.create, userController.redirectView);
 
