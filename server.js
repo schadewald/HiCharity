@@ -32,9 +32,11 @@ router.get("/name/:myName", homeController.respondWithName);
 //localhost:8080/name/whater-name-you-put
 
 router.get("/userList", userController.index, userController.indexView);
-//localhost:8080/user
+//localhost:8080/userList
 
 router.get("/newuser", userController.new);
+
+router.post("/newuser", userController.create, userController.redirectView);
 
 router.get("/login", userController.login);
 
@@ -45,6 +47,8 @@ router.get("/users/:id", userController.show, userController.showView);
 router.get("/users/:id/edit", userController.edit);
 
 router.put("/users/:id/update", userController.update, userController.redirectView);
+
+router.delete("/users/:id/delete", userController.delete, userController.redirectView);
 
 router.get("*", homeController.respondWithBadRequest);
 //localhost:8080/anything-not-yet-defined

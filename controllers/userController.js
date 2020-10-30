@@ -85,6 +85,20 @@ module.exports =
                     next(error);
                 });
     },
+    delete: (req, res, next) => 
+    {
+        let userId = req.params.id;
+        User.findByIdAndRemove(userId).then(() => 
+            {
+                res.locals.redirect = "/userList";
+                next();
+            })
+            .catch(error => 
+                {
+                    console.log(`Error deleting user by ID: ${error.message}`);
+                    next();
+                });
+    },
     redirectView: (req, res, next) => 
     {
         let redirectPath = res.locals.redirect;
