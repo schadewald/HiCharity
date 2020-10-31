@@ -6,7 +6,21 @@ let userController = require("./controllers/userController");
 const app = express();
 const router = express.Router();
 const methodOverride = require("method-override");
-
+const expressSession = require("express-session"),
+    cookieParser = require("cookie-parser"),
+    connectFlash = require("connect-flash");
+router.use(cookieParser("secret_passcode"));
+router.use(expressSession(
+    {
+        secret: "secret_passcode",
+        cookie: 
+        {
+            maxAge: 4000000
+        },
+        resave: false,
+        saveUninitialized: false
+    }));
+router.use(connectFlash());
 router.use(methodOverride("_method", 
 {
     methods: ["POST", "GET"]
