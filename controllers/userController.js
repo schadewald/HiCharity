@@ -32,6 +32,7 @@ module.exports =
         User.create(userParams)
             .then(user => 
                 {
+                    req.flash("success", `${user.fullName}'s account created successfully!`);
                     res.locals.redirect = "/userList";
                     res.locals.user = user;
                     next();
@@ -39,7 +40,9 @@ module.exports =
             .catch(error => 
                 {
                     console.log(`Error saving user: ${error.message}`);
-                    next(error);
+                    res.locals.redirect = "/newuser";
+                    req.flash("error", `Email already exitst! Please enter a different email.`);
+                    next();
                 });
     },
     edit: (req, res, next) => 
@@ -137,7 +140,7 @@ module.exports =
                 })
             .catch(error => 
                 {
-                    console.log(`Error fetching user by ID: ${erro.message}`);
+                    console.log(`Error fetching user by ID: ${error.message}`);
                     next();
                 });
     },
