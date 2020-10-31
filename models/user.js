@@ -59,11 +59,11 @@ userSchema.pre("save", function(next)
         next(error);
     });
 });
-userSchema.methods.passwordComparison = function(inputPassword) 
-{
-    let user = this;
-    return bcrypt.compare(inputPassword, user.password);
-};
+// userSchema.methods.passwordComparison = function(inputPassword) 
+// {
+//     let user = this;
+//     return bcrypt.compare(inputPassword, user.password);
+// };
 userSchema.plugin(passportLocalMongoose, 
 {
     usernameField: "email"
