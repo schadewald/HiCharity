@@ -19,11 +19,11 @@ module.exports =
 {
     new: (req, res) => 
     { 
-    res.render("users/new_user");
+        res.render("users/new_user");
     },
     login: (req, res) => 
     {
-    res.render("users/login_user");
+        res.render("users/login_user");
     },
     authenticate: (req, res, next) => 
     {
@@ -33,16 +33,28 @@ module.exports =
         })
         .then(user => 
         {
-            if (user && user.password === req.body.password) 
+            if (user) 
             {
-                res.locals.redirect = `/users/${user._id}`;
-                req.flash("success", `${user.fullName}'s logged in successfully!`);
-                res.locals.user = user;
-                next();
+                user.passwordComparison(req.body.password)
+                    .then(passwordsMatch => 
+                    {
+                        if (passwordsMatch) 
+                        {
+                            res.locals.redirect = `/users/${user._id}`;
+                            req.flash("success", `${user.fullName}'s logged in successfully!`);
+                            res.locals.user = user;
+                        }
+                        else 
+                        {
+                            req.flash("error", "Failed to log in user account: Incorrect Password.");
+                            res.locals.redirect = "/login";
+                        }
+                        next();
+                    });
             }
             else 
             {
-                req.flash("error", "Your account or password is incorrect. Please try again!");
+                req.flash("error", "Failed to log in user account: User account not found.");
                 res.locals.redirect = "/login";
                 next();
             }
