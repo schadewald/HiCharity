@@ -12,11 +12,6 @@ const expressSession = require("express-session"),
 const expressValidator = require("express-validator");
 const passport = require("passport");
 const User = require("./models/user");
-passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-router.use(passport.initialize());
-router.use(passport.session());
 router.use(cookieParser("secret_passcode"));
 router.use(expressSession(
     {
@@ -29,6 +24,15 @@ router.use(expressSession(
         saveUninitialized: false
     }));
 router.use(connectFlash());
+router.use(methodOverride("_method", 
+{
+    methods: ["POST", "GET"]
+}));
+router.use(passport.initialize());
+router.use(passport.session());
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 router.use((req, res, next) => 
 {
     res.locals.flashMessages = req.flash();
@@ -36,10 +40,6 @@ router.use((req, res, next) =>
     res.locals.currentUser = req.user;
     next();
 });
-router.use(methodOverride("_method", 
-{
-    methods: ["POST", "GET"]
-}));
 app.set("view engine", "ejs");
 app.use(layouts);
 app.use("/views", express.static("views"));

@@ -1,3 +1,4 @@
+const passport = require("passport");
 const User = require("../models/user"),
     getUserParams = (body) => 
     {
@@ -13,7 +14,6 @@ const User = require("../models/user"),
         };
     };
 const mongoose = require("mongoose");
-const passport = require("passport");
 mongoose.set("useCreateIndex", true);
 
 module.exports = 
