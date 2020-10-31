@@ -167,13 +167,14 @@ module.exports =
     },
     indexView: (req, res) => 
     {
-        res.render("users/index", 
+        if (req.query.format === "json") 
         {
-            flashMessages: 
-            {
-                success: "Loaded all users!"  //This is just to remind me how to send flashMessages to index.
-            }
-        });
+            res.json(res.locals.users);
+        }
+        else 
+        {
+            res.render("users/index");
+        }
     },
     show: (req, res, next) => 
     {

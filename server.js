@@ -50,7 +50,6 @@ app.use((req, res, next) =>
 });
 app.use(expressValidator());
 app.use("/", router);
-
 app.listen(port, () => 
 {
     console.log('Express started on http://localhost:8080; press Ctrl-C to terminate.');
