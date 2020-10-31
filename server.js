@@ -21,6 +21,11 @@ router.use(expressSession(
         saveUninitialized: false
     }));
 router.use(connectFlash());
+router.use((req, res, next) => 
+{
+    res.locals.flashMessages = req.flash();
+    next();
+});
 router.use(methodOverride("_method", 
 {
     methods: ["POST", "GET"]

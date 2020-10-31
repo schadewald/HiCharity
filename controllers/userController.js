@@ -1,4 +1,17 @@
-const User = require("../models/user");
+const User = require("../models/user"),
+    getUserParams = (body) => 
+    {
+        return {
+            name: 
+            {
+                first: body.first,
+                last: body.last
+            },
+            email: body.email,
+            userid: body.userid,
+            password: body.password
+        };
+    };
 const mongoose = require("mongoose");
 mongoose.set("useCreateIndex", true);
 
@@ -14,17 +27,8 @@ module.exports =
     },
     create: (req, res, next) => 
     {
-        let userParams = 
-        {
-            name: 
-            {
-                first: req.body.first,
-                last: req.body.last
-            },
-            email: req.body.email,
-            userid: Math.floor(Math.random() * 1000000),
-            password: req.body.password
-        };
+        let userParams = getUserParams(req.body);
+        userParams.userid = Math.floor(Math.random() * 1000000);        
         User.create(userParams)
             .then(user => 
                 {
@@ -66,7 +70,6 @@ module.exports =
                     last: req.body.last
                 },
                 email: req.body.email,
-                userid: req.body.userid,
                 password: req.body.password
             };
         User.findByIdAndUpdate(userId, 
