@@ -25,6 +25,34 @@ module.exports =
     {
     res.render("users/login_user");
     },
+    authenticate: (req, res, next) => 
+    {
+        User.findOne(
+        {
+            email: req.body.email
+        })
+        .then(user => 
+        {
+            if (user && user.password === req.body.password) 
+            {
+                res.locals.redirect = `/users/${user._id}`;
+                req.flash("success", `${user.fullName}'s logged in successfully!`);
+                res.locals.user = user;
+                next();
+            }
+            else 
+            {
+                req.flash("error", "Your account or password is incorrect. Please try again!");
+                res.locals.redirect = "/login";
+                next();
+            }
+        })
+        .catch(error => 
+            {
+                console.log(`Error logging in user: ${error.message}`);
+                next(error);
+            });
+    },
     create: (req, res, next) => 
     {
         let userParams = getUserParams(req.body);
@@ -127,7 +155,13 @@ module.exports =
     },
     indexView: (req, res) => 
     {
-        res.render("users/index");
+        res.render("users/index", 
+        {
+            flashMessages: 
+            {
+                success: "Loaded all users!"  //This is just to remind me how to send flashMessages to index.
+            }
+        });
     },
     show: (req, res, next) => 
     {

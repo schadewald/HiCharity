@@ -59,7 +59,7 @@ router.post("/newuser", userController.create, userController.redirectView);
 
 router.get("/login", userController.login);
 
-router.post("/login", userController.create, userController.redirectView);
+router.post("/login", userController.authenticate, userController.redirectView);
 
 router.get("/users/:id", userController.show, userController.showView);
 
