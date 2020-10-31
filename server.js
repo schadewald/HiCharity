@@ -9,6 +9,7 @@ const methodOverride = require("method-override");
 const expressSession = require("express-session"),
     cookieParser = require("cookie-parser"),
     connectFlash = require("connect-flash");
+const expressValidator = require("express-validator");
 router.use(cookieParser("secret_passcode"));
 router.use(expressSession(
     {
@@ -42,6 +43,8 @@ app.use((req, res, next) =>
 });
 app.use("/", router);
 
+router.use(expressValidator());
+
 router.get("/", homeController.repondWithHomePage);
 //localhost:8080/
 
@@ -55,7 +58,7 @@ router.get("/userList", userController.index, userController.indexView);
 
 router.get("/newuser", userController.new);
 
-router.post("/newuser", userController.create, userController.redirectView);
+router.post("/newuser", userController.validate, userController.create, userController.redirectView);
 
 router.get("/login", userController.login);
 
