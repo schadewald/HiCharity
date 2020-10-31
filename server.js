@@ -32,6 +32,8 @@ router.use(connectFlash());
 router.use((req, res, next) => 
 {
     res.locals.flashMessages = req.flash();
+    res.locals.loggedIn = req.isAuthenticated();
+    res.locals.currentUser = req.user;
     next();
 });
 router.use(methodOverride("_method", 
@@ -69,7 +71,9 @@ router.post("/newuser", userController.validate, userController.create, userCont
 
 router.get("/login", userController.login);
 
-router.post("/login", userController.authenticate, userController.redirectView);
+router.post("/login", userController.authenticate);
+
+router.get("/logout", userController.logout, userController.redirectView);
 
 router.get("/users/:id", userController.show, userController.showView);
 

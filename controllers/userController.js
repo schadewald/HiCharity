@@ -13,6 +13,7 @@ const User = require("../models/user"),
         };
     };
 const mongoose = require("mongoose");
+const passport = require("passport");
 mongoose.set("useCreateIndex", true);
 
 module.exports = 
@@ -25,46 +26,13 @@ module.exports =
     {
         res.render("users/login_user");
     },
-    authenticate: (req, res, next) => 
+    authenticate: passport.authenticate("local", 
     {
-        User.findOne(
-        {
-            email: req.body.email
-        })
-        .then(user => 
-        {
-            if (user) 
-            {
-                user.passwordComparison(req.body.password)
-                    .then(passwordsMatch => 
-                    {
-                        if (passwordsMatch) 
-                        {
-                            res.locals.redirect = `/users/${user._id}`;
-                            req.flash("success", `${user.fullName}'s logged in successfully!`);
-                            res.locals.user = user;
-                        }
-                        else 
-                        {
-                            req.flash("error", "Failed to log in user account: Incorrect Password.");
-                            res.locals.redirect = "/login";
-                        }
-                        next();
-                    });
-            }
-            else 
-            {
-                req.flash("error", "Failed to log in user account: User account not found.");
-                res.locals.redirect = "/login";
-                next();
-            }
-        })
-        .catch(error => 
-            {
-                console.log(`Error logging in user: ${error.message}`);
-                next(error);
-            });
-    },
+        failureRedirect: "/login",
+        failureFlash: "failed to login.",
+        successRedirect: "/",
+        successFlash: "Logged in!"
+    }),
     validate: (req, res, next) => 
     {
         req.sanitizeBody("email").normalizeEmail(
@@ -155,6 +123,13 @@ module.exports =
                     console.log(`Error updating user by ID: ${error.message}`);
                     next(error);
                 });
+    },
+    logout: (req, res, next) => 
+    {
+        req.logout();
+        req.flash("success", "You have been logged out!");
+        res.locals.redirect = "/";
+        next();
     },
     delete: (req, res, next) => 
     {
