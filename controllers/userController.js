@@ -67,13 +67,13 @@ module.exports =
             if (user) 
             {
                 req.flash("success", `${user.fullName}'s account created successfully!`);
-                res.locals.redirect = "/userList";
+                res.locals.redirect = "/users/userList";
                 next();
             }
             else 
             {
                 req.flash("error", `Failed to create user account because: ${error.message}.`);
-                res.locals.redirect = "/newuser";
+                res.locals.redirect = "/users/newuser";
                 next();
             }
         });

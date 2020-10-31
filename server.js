@@ -1,10 +1,8 @@
 const port = 8080;
 let express = require("express");
 let layouts = require("express-ejs-layouts");
-let homeController = require("./controllers/homeController");
-let userController = require("./controllers/userController");
 const app = express();
-const router = express.Router();
+const router = require("./routes/index");
 const methodOverride = require("method-override");
 const expressSession = require("express-session"),
     cookieParser = require("cookie-parser"),
@@ -12,8 +10,8 @@ const expressSession = require("express-session"),
 const expressValidator = require("express-validator");
 const passport = require("passport");
 const User = require("./models/user");
-router.use(cookieParser("secret_passcode"));
-router.use(expressSession(
+app.use(cookieParser("secret_passcode"));
+app.use(expressSession(
     {
         secret: "secret_passcode",
         cookie: 
@@ -23,17 +21,17 @@ router.use(expressSession(
         resave: false,
         saveUninitialized: false
     }));
-router.use(connectFlash());
-router.use(methodOverride("_method", 
+app.use(connectFlash());
+app.use(methodOverride("_method", 
 {
     methods: ["POST", "GET"]
 }));
-router.use(passport.initialize());
-router.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-router.use((req, res, next) => 
+app.use((req, res, next) => 
 {
     res.locals.flashMessages = req.flash();
     res.locals.loggedIn = req.isAuthenticated();
@@ -50,41 +48,8 @@ app.use((req, res, next) =>
     console.log(`request made to: ${req.url}`)
     next();
 });
+app.use(expressValidator());
 app.use("/", router);
-
-router.use(expressValidator());
-
-router.get("/", homeController.repondWithHomePage);
-//localhost:8080/
-
-router.post("/", homeController.displayRequest);
-
-router.get("/name/:myName", homeController.respondWithName);
-//localhost:8080/name/whater-name-you-put
-
-router.get("/userList", userController.index, userController.indexView);
-//localhost:8080/userList
-
-router.get("/newuser", userController.new);
-
-router.post("/newuser", userController.validate, userController.create, userController.redirectView);
-
-router.get("/login", userController.login);
-
-router.post("/login", userController.authenticate);
-
-router.get("/logout", userController.logout, userController.redirectView);
-
-router.get("/users/:id", userController.show, userController.showView);
-
-router.get("/users/:id/edit", userController.edit);
-
-router.put("/users/:id/update", userController.update, userController.redirectView);
-
-router.delete("/users/:id/delete", userController.delete, userController.redirectView);
-
-router.get("*", homeController.respondWithBadRequest);
-//localhost:8080/anything-not-yet-defined
 
 app.listen(port, () => 
 {
