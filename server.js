@@ -55,5 +55,5 @@ router.get("*", homeController.respondWithBadRequest);
 
 app.listen(port, () => 
 {
-    console.log("Server is now using express.");
+    console.log('Express started on http://localhost:8080; press Ctrl-C to terminate.');
 });
