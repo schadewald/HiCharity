@@ -10,6 +10,13 @@ const expressSession = require("express-session"),
     cookieParser = require("cookie-parser"),
     connectFlash = require("connect-flash");
 const expressValidator = require("express-validator");
+const passport = require("passport");
+const User = require("./models/user");
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+router.use(passport.initialize());
+router.use(passport.session());
 router.use(cookieParser("secret_passcode"));
 router.use(expressSession(
     {
