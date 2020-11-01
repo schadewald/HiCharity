@@ -16,13 +16,13 @@
             <% if (loggedIn) { %>
                 Logged in as <a href="<%=`/users/${currentUser._id}`%>">
                 <%= currentUser.fullName %></a>
+                <ul>
+                    <li><%- include ('users/_usersModal') %></li>
+                </ul>
                 <a href="/users/logout">Log Out</a>
             <% } else { %>
                 <a href="/users/login">Log In</a>
             <% } %>
-            <ul>
-                <li><%- include ('users/_usersModal') %></li>
-            </ul>
         </div>
     </div>
     <%- body %>
