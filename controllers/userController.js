@@ -136,7 +136,7 @@ module.exports =
         let userId = req.params.id;
         User.findByIdAndRemove(userId).then(() => 
             {
-                res.locals.redirect = "/userList";
+                res.locals.redirect = "/users/userList";
                 next();
             })
             .catch(error => 
