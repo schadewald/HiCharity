@@ -1,5 +1,13 @@
-<script type="text/javascript" src="/public/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/js/bootstrap.min.js"></script>
+<script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous">
+</script>
+<script 
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" 
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" 
+    crossorigin="anonymous">
+</script>
 <script type="text/javascript" src="/public/js/userListApp.js"></script>
 <body>
     <div class="flashes">
@@ -14,11 +22,11 @@
     <div id="nav">
         <div class="login">
             <% if (loggedIn) { %>
+                <ol>
+                    <li><%- include ('users/_usersModal') %></li>
+                </ol>
                 Logged in as <a href="<%=`/users/${currentUser._id}`%>">
                 <%= currentUser.fullName %></a>
-                <ul>
-                    <li><%- include ('users/_usersModal') %></li>
-                </ul>
                 <a href="/users/logout">Log Out</a>
             <% } else { %>
                 <a href="/users/login">Log In</a>

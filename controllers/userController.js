@@ -48,7 +48,7 @@ module.exports =
                 let messages = error.array().map(e => e.msg);
                 req.skip = true;
                 req.flash("error", messages.join(" and "));
-                res.locals.redirect = "/newuser";
+                res.locals.redirect = "/users/newuser";
                 next();
             }
             else 
