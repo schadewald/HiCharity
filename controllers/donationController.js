@@ -9,6 +9,7 @@ const Donation = require("../models/donation"),
         };
     };
 const mongoose = require("mongoose");
+const httpStatus = require("http-status-codes");
 mongoose.set("useCreateIndex", true);
 
 module.exports = 
@@ -110,5 +111,34 @@ module.exports =
         {
             res.render("donations/index");
         }
+    },
+    respondJSON: (req, res) => 
+    {
+        res.json(
+            {
+                status: httpStatus.OK,
+                data: res.locals
+            });
+    },
+    errorJSON: (error, req, res, next) => 
+    {
+        let errorObject;
+        if (error) 
+        {
+            errorObject = 
+            {
+                status: httpStatus.INTERNAL_SERVER_ERROR,
+                message: error.message
+            };
+        }
+        else 
+        {
+            errorObject = 
+            {
+                status: httpStatus.INTERNAL_SERVER_ERROR,
+                message: "Unkown Error."
+            };
+        }
+        res.json(errorObject);
     }
 };

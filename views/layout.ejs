@@ -8,7 +8,7 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" 
     crossorigin="anonymous">
 </script>
-<script type="text/javascript" src="/public/js/userListApp.js"></script>
+<script type="text/javascript" src="/public/js/donationListApp.js"></script>
 <body>
     <div class="flashes">
         <% if (flashMessages) { %>
@@ -24,13 +24,13 @@
             <a href="/">Home</a>
             <% if (loggedIn) { %>
                 <ol>
-                    <li><%- include ('users/_usersModal') %></li>
+                    <li><%- include ('donations/_donationsModal') %></li>
                 </ol>
                 Logged in as <a href="<%=`/users/${currentUser._id}`%>">
                 <%= currentUser.fullName %></a>
                 <a href="/users/logout">Log Out</a>
             <% } else { %>
-                <a href="/users/login">Log In</a>
+                <a href="/users/login">Login</a>
             <% } %>
         </div>
     </div>
