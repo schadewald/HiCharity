@@ -19,18 +19,6 @@ module.exports =
     console.log(req.query);
     res.send("POST successful");
     },
-    sendLogin: (req, res) => 
-    {
-    res.render("loginPage", {name: ""});
-    },
-    sendUserAccount: (req, res) => 
-    {
-    res.send("User Account Page");
-    },
-    sendDonation: (req, res) => 
-    {
-    res.send("Donation Page");
-    },
     repondWithHomePage: (req, res) => 
     {
     res.render("home_page");
@@ -43,9 +31,5 @@ module.exports =
     respondWithBadRequest: (req, res) => 
     {
     res.send("Error");
-    },
-    authenticateLoginInfo: (req, res) =>
-    {
-    res.send(`Login attempt: <br> Username: ${req.body.username} <br> Password: ${req.body.password}`);
     }
 };

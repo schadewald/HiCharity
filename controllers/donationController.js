@@ -43,24 +43,42 @@ module.exports =
     },
     create: (req, res, next) => 
     {
-        if (req.skip) next();
-        let newDonation = new Donation( getUserParams(req.body) );
-        newDonation.userid = 8888;       
-        Donation.register(newDonation, req.body.username, (error, donation) => 
+        let donationParams = 
         {
-            if (donation) 
+            username: req.body.username,
+            userid: 8888,
+            amount: req.body.amount
+        };
+        Donation.create(donationParams).then(donation => 
             {
-                req.flash("success", `${donation.amount} donated successfully!`);
                 res.locals.redirect = "/";
+                res.locals.donation = donation;
                 next();
-            }
-            else 
+            })
+            .catch(error => 
             {
-                req.flash("error", `Failed to create donation because: ${error.message}.`);
-                res.locals.redirect = "/donations/donate";
-                next();
-            }
-        });
+                console.log(`Error saving donation: ${error.message}`);
+                next(error);
+            });
+
+        // if (req.skip) next();
+        // let newDonation = new Donation( getUserParams(req.body) );
+        // newDonation.userid = 8888;       
+        // Donation.register(newDonation, req.body.username, (error, donation) => 
+        // {
+        //     if (donation) 
+        //     {
+        //         req.flash("success", `${donation.amount} donated successfully!`);
+        //         res.locals.redirect = "/";
+        //         next();
+        //     }
+        //     else 
+        //     {
+        //         req.flash("error", `Failed to create donation because: ${error.message}.`);
+        //         res.locals.redirect = "/donations/donate";
+        //         next();
+        //     }
+        // });
     },
     redirectView: (req, res, next) => 
     {

@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt");
+const passportLocalMongoose = require("passport-local-mongoose");
 const mongoose = require("mongoose"),
     {Schema} = mongoose,
     donationSchema = new Schema(
@@ -26,4 +28,9 @@ const mongoose = require("mongoose"),
     {
         timestamps: true
     });
+donationSchema.plugin(passportLocalMongoose, 
+{
+    usernameField: "username",
+    amountField: "amount"
+});
 module.exports = mongoose.model("donation", donationSchema);
