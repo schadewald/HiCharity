@@ -3,6 +3,8 @@ const router = require("express").Router(),
 
 router.get("/donate", donationController.new);
 
-router.post("/donate", donationController.create, donationController.redirectView);
+router.post("/donate", donationController.validate, donationController.create, donationController.redirectView);
+
+router.get("/donationList", donationController.index, donationController.indexView);
 
 module.exports = router;

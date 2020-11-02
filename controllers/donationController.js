@@ -3,8 +3,8 @@ const Donation = require("../models/donation"),
     getUserParams = (body) => 
     {
         return {
-            username: body.username,
             userid: body.userid,
+            username: body.username,
             amount: body.amount
         };
     };
@@ -45,13 +45,13 @@ module.exports =
     {
         let donationParams = 
         {
+            userid: Math.floor(Math.random() * 1000000),
             username: req.body.username,
-            userid: 8888,
             amount: req.body.amount
         };
         Donation.create(donationParams).then(donation => 
             {
-                res.locals.redirect = "/";
+                res.locals.redirect = "/donations/donationList";
                 res.locals.donation = donation;
                 next();
             })
@@ -85,5 +85,30 @@ module.exports =
         let redirectPath = res.locals.redirect;
         if (redirectPath) res.redirect(redirectPath);
         else next();
+    },
+    index: (req, res, next) => 
+    {
+        Donation.find()
+            .then(donations => 
+            {
+                res.locals.donations = donations;
+                next();
+            })
+            .catch(error => 
+            {
+                console.log(`Error fetching donations: ${error.message}`)
+                next(error);
+            });
+    },
+    indexView: (req, res) => 
+    {
+        if (req.query.format === "json") 
+        {
+            res.json(res.locals.donations);
+        }
+        else 
+        {
+            res.render("donations/index");
+        }
     }
 };

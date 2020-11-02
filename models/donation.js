@@ -9,13 +9,13 @@ const mongoose = require("mongoose"),
             type: String,
             required: true,
             lowercase: true,
-            unique: true
         },
         userid: 
         {
             type: Number,
             min: [0, "Error - Negative Number ID"],
-            max: 999999
+            max: 999999,
+            required: true
         },
         amount: 
         {
