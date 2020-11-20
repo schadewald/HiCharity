@@ -39,6 +39,7 @@ app.use((req, res, next) =>
     next();
 });
 app.set("view engine", "ejs");
+app.set("token", process.env.TOKEN || "userT0k3n");
 app.use(layouts);
 app.use("/views", express.static("views"));
 app.use("/public", express.static("public"));

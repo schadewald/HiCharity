@@ -1,4 +1,5 @@
 const passport = require("passport");
+const token = process.env.TOKEN || "userT0k3n";
 const User = require("../models/user"),
     getUserParams = (body) => 
     {
@@ -18,6 +19,11 @@ mongoose.set("useCreateIndex", true);
 
 module.exports = 
 {
+    verifyToken: (req, res, next) => 
+    {
+        if (req.query.apiToken === token) next();
+        else next(new Error("Invalid API Token."));
+    },
     new: (req, res) => 
     { 
         res.render("users/new_user");

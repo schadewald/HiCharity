@@ -3,7 +3,7 @@ $(document).ready(() =>
     $("#modal-button").click(() => 
     {
         $(".modal-body").html('');
-        $.get("/api/donations", (results = {}) => 
+        $.get("/api/donations?apiToken=userT0k3n", (results = {}) => 
         {
             let data = results.data;
             if (!data || !data.donations) return;
@@ -12,10 +12,13 @@ $(document).ready(() =>
                 $(".modal-body").append(
                     `<div>
                     <span class="donation-username">
-                    ${donation.username}
+                    User: ${donation.username}
                     </span>
                     <div class='donation-amount'>
-                    ${donation.amount}
+                    $${donation.amount}
+                    </div>
+                    <div class='donation-timestamp'>
+                    Created: ${donation.createdAt}
                     </div>
                     </div>`
                 );
