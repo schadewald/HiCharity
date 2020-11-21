@@ -2,9 +2,9 @@
     "name": "test",
     "version": "1.0.0",
     "description": "",
-    "main": "server.js",
+    "main": "donation-service.js",
     "scripts": {
-      "start": "node server.js",
+      "start": "node donation-service.js",
       "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Chris Doster",

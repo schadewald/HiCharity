@@ -2,4 +2,4 @@ FROM node:alpine
 WORKDIR /node
 COPY . .
 RUN npm install
-CMD ["node", "front-end.js"]
+CMD ["node", "user-service.js"]

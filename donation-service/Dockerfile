@@ -1,5 +1,5 @@
-FROM node
-WORKDIR /cen4053-group7
+FROM node:alpine
+WORKDIR /node
 COPY . .
-RUN yarn install --production
-CMD ["node", "server.js"]
+RUN npm install
+CMD ["node", "donation-service.js"]
