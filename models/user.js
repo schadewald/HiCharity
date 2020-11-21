@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const randToken = require("rand-token");
 const passportLocalMongoose = require("passport-local-mongoose");
 const mongoose = require("mongoose"),
     {Schema} = mongoose,
@@ -35,6 +36,10 @@ const mongoose = require("mongoose"),
                 type: String,
                 required: true
             },
+            apiToken: 
+            {
+                type: String
+            },
             users: [{type: Schema.Types.ObjectId, ref: "user"}],
             donations: [{type: Schema.Types.ObjectId, ref: "donation"}]
         },
@@ -48,6 +53,7 @@ userSchema.virtual("fullName").get(function()
 userSchema.pre("save", function(next) 
 {
     let user = this;
+    if (!user.apiToken) user.apiToken = randToken.generate(16);
     bcrypt.hash(user.password, 10).then(hash => 
     {
         user.password = hash;

@@ -1,5 +1,6 @@
 const passport = require("passport");
-const token = process.env.TOKEN || "userT0k3n";
+const token = process.env.TOKEN || "recipeT0k3n"
+const jsonWebToken = require("jsonwebtoken");
 const User = require("../models/user"),
     getUserParams = (body) => 
     {
@@ -19,10 +20,53 @@ mongoose.set("useCreateIndex", true);
 
 module.exports = 
 {
+    apiAuthenticate: (req, res, next) => 
+    {
+        passport.authenticate("local", (errors, user) => 
+        {
+            if (user) 
+            {
+                let signedToken = jsonWebToken.sign(
+                    {
+                        data: user._id,
+                        exp: new Date().setDate(new Date().getDate() + 1)
+                    },
+                    "secret_encoding_passphrase");
+                res.json(
+                    {
+                        success: true,
+                        token: signedToken
+                    });
+            }
+            else 
+            {
+                res.json(
+                    {
+                        success: fail,
+                        message: "Could not authenticate user."
+                    });
+            }
+        })(req, res, next);
+    },
     verifyToken: (req, res, next) => 
     {
-        if (req.query.apiToken === token) next();
-        else next(new Error("Invalid API Token."));
+        let token = req.query.apiToken;
+        if (token) 
+        {
+            User.findOne({ apiToken: token }).then(user => 
+                {
+                    if (user) next();
+                    else next(new Error("invalid API Token."));
+                })
+                .catch(error => 
+                    {
+                        next(new Error(error.message));
+                    });
+        }
+        else 
+        {
+            next(new Error("Invalid API Token."));
+        }
     },
     new: (req, res) => 
     { 

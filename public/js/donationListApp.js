@@ -2,8 +2,9 @@ $(document).ready(() =>
 {
     $("#modal-button").click(() => 
     {
+        let apiToken = $("#apiToken").data("token");
         $(".modal-body").html('');
-        $.get("/api/donations?apiToken=userT0k3n", (results = {}) => 
+        $.get(`/api/donations?apiToken=${apiToken}`, (results = {}) => 
         {
             let data = results.data;
             if (!data || !data.donations) return;

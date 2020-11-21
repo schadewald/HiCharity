@@ -23,6 +23,7 @@
         <div class="login">
             <a href="/">Home</a>
             <% if (loggedIn) { %>
+                <div id="apiToken" data-token="<%= currentUser.apiToken %>" style="display: none;"></div>
                 <ol>
                     <li><%- include ('donations/_donationsModal') %></li>
                 </ol>
