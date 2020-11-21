@@ -1,17 +1,29 @@
 version: "3"
 
 services:
+  api:
+    depends_on: 
+      - user
+      
+    image: api:1.0
+    build: ./api
+    ports:
+      - "3000:3000"
+    environment: 
+      - USER_SERVICE_ENDPOINT=http://user:3000/
+      
+  user: 
+    image: user:1.0
+    build: ./user-service
+    ports: 
+      - "3050:3000"
+  
   client:
     depends_on:
-      - donation-service
+      - api
     image: client:1.0
     build: ./front-end
     ports:
       - "8080:8080"
     environment: 
-      - DONATION_ENDPOINT=http://donation-service:3000/
-  donation-service:
-    image: donation:1.0
-    build: ./donation-service
-    ports:
-      - "3000:3000"
+      - API_ENDPOINT=http://api:3000/

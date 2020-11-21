@@ -2,6 +2,7 @@ const port = 3000;
 let express = require("express");
 const app = express();
 const router = require("./routes/index");
+app.use(cors());
 app.use((req, res, next) => 
 {
     res.locals.flashMessages = req.flash();

@@ -1,15 +1,16 @@
 const port = 8080;
+const axios = require("axios");
+const homeController = require("./controllers/homeController");
 let express = require("express");
 let layouts = require("express-ejs-layouts");
 const app = express();
-const router = require("./routes/index");
 const methodOverride = require("method-override");
 const expressSession = require("express-session"),
     cookieParser = require("cookie-parser"),
     connectFlash = require("connect-flash");
 const expressValidator = require("express-validator");
 const passport = require("passport");
-const User = require("./models/user");
+const User = require("../api/models/user");
 app.use(cookieParser("secret_passcode"));
 app.use(expressSession(
     {
@@ -51,8 +52,9 @@ app.use((req, res, next) =>
     next();
 });
 app.use(expressValidator());
-app.use("/", router);
+app.use("/", homeController.repondWithHomePage);
+app.post("/", homeController.displayRequest);
 app.listen(port, () => 
 {
-    console.log('Express started on http://localhost:8080; press Ctrl-C to terminate.');
+    console.log('Front-End started on http://localhost:8080; press Ctrl-C to terminate.');
 });
