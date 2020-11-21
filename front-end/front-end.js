@@ -10,7 +10,7 @@ const expressSession = require("express-session"),
     connectFlash = require("connect-flash");
 const expressValidator = require("express-validator");
 const passport = require("passport");
-const User = require("../api/models/user");
+const User = require("./models/user");
 app.use(cookieParser("secret_passcode"));
 app.use(expressSession(
     {
