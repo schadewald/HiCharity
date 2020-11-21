@@ -1,6 +1,5 @@
 const passport = require("passport");
-const Donation = require("../models/donation"),
-    getUserParams = (body) => 
+const getUserParams = (body) => 
     {
         return {
             userid: body.userid,
@@ -10,6 +9,7 @@ const Donation = require("../models/donation"),
     };
 const mongoose = require("mongoose");
 const httpStatus = require("http-status-codes");
+const axios = require("axios");
 mongoose.set("useCreateIndex", true);
 
 module.exports = 
@@ -50,17 +50,6 @@ module.exports =
             username: req.body.username,
             amount: req.body.amount
         };
-        Donation.create(donationParams).then(donation => 
-            {
-                res.locals.redirect = "/donations/donationList";
-                res.locals.donation = donation;
-                next();
-            })
-            .catch(error => 
-            {
-                console.log(`Error saving donation: ${error.message}`);
-                next(error);
-            });
     },
     redirectView: (req, res, next) => 
     {
@@ -70,15 +59,16 @@ module.exports =
     },
     index: (req, res, next) => 
     {
-        Donation.find()
-            .then(donations => 
+        axios
+            .get(process.env.DONATION_ENDPOINT + "dummy")
+            .then((response) => 
             {
-                res.locals.donations = donations;
+                res.locals.donations = response.body.dummy;
                 next();
             })
-            .catch(error => 
+            .catch((error) => 
             {
-                console.log(`Error fetching donations: ${error.message}`)
+                console.log(error.message)
                 next(error);
             });
     },

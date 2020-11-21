@@ -1,4 +1,3 @@
-const bcrypt = require("bcrypt");
 const passportLocalMongoose = require("passport-local-mongoose");
 const mongoose = require("mongoose"),
     {Schema} = mongoose,
