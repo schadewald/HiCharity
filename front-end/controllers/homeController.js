@@ -8,8 +8,6 @@ db.once("open", () =>
 {
     console.log("Successfully Connected to Database!")
 });
-const User = require("../../api/models/user");
-//const Donation = require("../models/userDonation");
 
 module.exports = 
 {
