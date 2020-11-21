@@ -1,5 +1,5 @@
 const passport = require("passport");
-    getUserParams = (body) => 
+const getUserParams = (body) => 
     {
         return {
             userid: body.userid,
