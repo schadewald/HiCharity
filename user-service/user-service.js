@@ -1,4 +1,4 @@
-const port = 8080;
+const port = 3000;
 let express = require("express");
 let layouts = require("express-ejs-layouts");
 const app = express();

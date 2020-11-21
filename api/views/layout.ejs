@@ -1,0 +1,39 @@
+<script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous">
+</script>
+<script 
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" 
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" 
+    crossorigin="anonymous">
+</script>
+<script type="text/javascript" src="/public/js/donationListApp.js"></script>
+<body>
+    <div class="flashes">
+        <% if (flashMessages) { %>
+            <% if (flashMessages.success) { %>
+                <div class="flash success"><%= flashMessages.success %></div>
+                <% } else if (flashMessages.error) { %>
+                <div class="flash error"><%= flashMessages.error %></div>
+            <% } %>
+        <% } %>
+    </div>
+    <div id="nav">
+        <div class="login">
+            <a href="/">Home</a>
+            <% if (loggedIn) { %>
+                <div id="apiToken" data-token="<%= currentUser.apiToken %>" style="display: none;"></div>
+                <ol>
+                    <li><%- include ('donations/_donationsModal') %></li>
+                </ol>
+                Logged in as <a href="<%=`/users/${currentUser._id}`%>">
+                <%= currentUser.fullName %></a>
+                <a href="/users/logout">Log Out</a>
+            <% } else { %>
+                <a href="/users/login">Login</a>
+            <% } %>
+        </div>
+    </div>
+    <%- body %>
+</body>

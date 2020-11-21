@@ -1,0 +1,43 @@
+
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    </head>
+
+    <body>
+        <div class="login-main">
+
+            <div class="top-bar">
+                <div class="website-emblem">
+                    <img src = "/views/assets/uwf_logo.png">
+                </div>
+            </div>
+
+            <div class="login-form">
+                <form action="/users/login" method="POST">
+                    <div class="form-group">
+                        <label>
+                            Username
+                        </label>
+                        <input type="text" name="username" placeholder="Enter account username">
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            Password
+                        </label>
+                        <input type="text" name="password" placeholder="Enter account password">
+                    </div>
+
+                    <br>
+                    <input type="submit" name="submit" value="Login">
+                </form>
+            </div>
+        </div>
+    </body>
+
+    <footer class="login-footer">
+        <p>Copyright &copy; 2020 CEN4053 Group 7</p>
+    </footer>
+</html>

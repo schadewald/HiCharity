@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Donation</title>
+        <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    </head>
+    <body>
+        <div class="login-main">
+            <div class="top-bar">
+                <div class="website-emblem">
+                    <img src="/views/assets/uwf_logo.png">
+                </div>
+            </div>
+            <div class="data-form">
+                <form action="/donations/donate" method="POST">
+                    <h2>Please Enter Donation Info:</h2>
+                    <label for="inputUsername">UserName/Email address</label>
+                    <input type="username" name="username" id="inputUsername"
+                        placeholder="UserName/Email address" required>
+                    <label for="inputAmount">Amount</label>
+                    <input type="amount" name="amount" id="inputAmount"
+                        placeholder="Amount" required>
+                    <button type="submit">Donate!</button>
+                </form>
+            </div>
+        </div>
+    </body>
+    <footer class="login-footer">
+        <p>Copyright &copy: 2020 CEN4053 Group 7</p>
+    </footer>
+</html>
