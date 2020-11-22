@@ -7,4 +7,6 @@ router.post("/donate", donationController.validate, donationController.create, d
 
 router.get("/donationList", donationController.index, donationController.indexView);
 
+router.get("/dummy", donationController.dummy)
+
 module.exports = router;

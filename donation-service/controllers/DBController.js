@@ -1,5 +1,5 @@
-const passport = require("passport");
-const Donation = require("../models/donation"),
+//const passport = require("passport");
+/*const Donation = require("../models/donation"),
     getUserParams = (body) => 
     {
         return {
@@ -7,16 +7,16 @@ const Donation = require("../models/donation"),
             username: body.username,
             amount: body.amount
         };
-    };
-const mongoose = require("mongoose");
-const httpStatus = require("http-status-codes");
-mongoose.set("useCreateIndex", true);
+    };*/
+//const mongoose = require("mongoose");
+//onst httpStatus = require("http-status-codes");
+//mongoose.set("useCreateIndex", true);
 
 module.exports = 
 {
     create: (req, res, next) =>
     {
-        Donation.create(req.body.donationParams).then(donation => 
+        /*Donation.create(req.body.donationParams).then(donation => 
             {
                 res.locals.redirect = "/donations/donationList";
                 res.locals.donation = donation;
@@ -26,15 +26,15 @@ module.exports =
             {
                 console.log(`Error saving donation: ${error.message}`);
                 next(error);
-            });
+            });*/
     },
-    getDummy: (req, res, next) =>
+    getDummy: (req, res) =>
     {
+        console.log("getDummy called!");
         let jsonDummy = {
             "name": "dummy",
             "id": -1
         }
-        res.body.dummy = jsonDummy;
-        next();
+        res.json(jsonDummy);
     }
 };

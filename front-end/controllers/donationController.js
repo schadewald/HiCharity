@@ -83,14 +83,17 @@ module.exports =
             .get(process.env.DONATION_ENDPOINT + "dummy")
             .then((response) => 
             {
-                res.locals.donations = response.body.dummy;
+                res.locals.donations = response.data;
+                app.locals.donations = response.data;
+                //req.query.format = "json";
                 next();
             })
             .catch((err) => 
             {
-                console.log(err.message)
+                console.log(err.message);
                 next(error);
             });
+            
         /*Donation.find()
             .then(donations => 
             {
@@ -142,5 +145,18 @@ module.exports =
             };
         }
         res.json(errorObject);
+    },
+    dummy: (req, res) =>
+    {
+        axios.get(process.env.DONATION_ENDPOINT + "dummy")
+            .then((response) =>
+            {
+                console.log(response.data);
+                res.json(response.data);
+            })
+            .catch((err) => 
+            {
+                res.send("ERROR!!!! \n" + err.message);
+            });
     }
 };
