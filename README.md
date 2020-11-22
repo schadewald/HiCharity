@@ -9,7 +9,8 @@ The Users that we intend this Project for are 18+ individuals who range from peo
 
 The Scope of this Project will include local and nationwide charities, and will initially launch as a website. Possible expansions into global relief efforts and Mobile Applications in the future.
 
-To begin, run npm start to get the server up and running.
+To begin, run docker-compose build to get the containers built.
+Next, run docker-compose up to start the containers.
 Open an internet browser such as Google Chrome.
 In the web address field, type localHost:8080 to reach the home page.
 From the home page you can navigate through several charities with the up and down arrow buttons.
