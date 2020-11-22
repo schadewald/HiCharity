@@ -70,11 +70,11 @@ module.exports =
     },
     new: (req, res) => 
     { 
-        res.render("users/new_user");
+        res.render("views/users/new_user");
     },
     login: (req, res) => 
     {
-        res.render("users/login_user");
+        res.render("views/users/login_user");
     },
     authenticate: passport.authenticate("local", 
     {
@@ -134,7 +134,7 @@ module.exports =
         User.findById(userId)
             .then(user => 
                 {
-                    res.render("users/edit", 
+                    res.render("views/users/edit", 
                     {
                         user: user
                     });
@@ -223,7 +223,7 @@ module.exports =
         }
         else 
         {
-            res.render("users/index");
+            res.render("views/users/index");
         }
     },
     show: (req, res, next) => 
@@ -243,6 +243,6 @@ module.exports =
     },
     showView: (req, res) => 
     {
-        res.render("users/show");
+        res.render("views/users/show");
     }
 };

@@ -8,10 +8,11 @@ const port = 3000;
 app.use(cors());
 app.use((req, res, next) => 
 {
-    console.log(`request made to: ${req.url}`)
+    console.log(`API request made to: ${req.url}`);
     next();
 });
 app.use("/", router);
+
 // app.get("/users", (req, res) => 
 // {
 //     axios

@@ -52,6 +52,15 @@ app.use((req, res, next) =>
     next();
 });
 app.use(expressValidator());
+app.use("/users", (req, res) => 
+{
+    console.log(`request made to: ${req.url}`);
+    axios
+    .get(process.env.API_ENDPOINT + "users", { params: req.query })
+    .then((response) => res.send(response.data))
+    .catch((err) => console.log(err));
+    console.log("Something Happened.");
+});
 app.use("/", homeController.repondWithHomePage);
 app.post("/", homeController.displayRequest);
 app.listen(port, () => 

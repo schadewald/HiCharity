@@ -1,0 +1,217 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.main 
+{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, #0000CC, #99CC33);
+}
+nav{
+    width: 80%;
+    position: sticky;
+    margin: 20px auto;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+}
+.uwf-logo img 
+{
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+.navigation-links 
+{
+    flex: 1;
+    text-align: right;
+    position:relative;
+}
+.navigation-links ul li
+{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+}
+.navigation-links ul li a 
+{
+    color: #ffffff;
+    text-decoration: none;
+}
+.charity-preview 
+{
+    width: 1000px;
+    height: 1000px;
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    transform: translateY(-50%);
+}
+#circle
+{
+    width: 1000px;
+    height: 1000px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    transform: rotate(0deg);
+    transition: 1s;
+}
+.charity-thumbnail img
+{
+    width: 70px;
+}
+.charity-thumbnail 
+{
+    position: absolute;
+    display: flex;
+    color: #ffffff;
+}
+.charity-thumbnail div 
+{
+    margin-left: 30px;
+}
+.charity-thumbnail div p
+{
+    margin-top: 8px;
+}
+.salvation-army 
+{
+    top: 450px;
+    right: 50px;
+}
+.feeding-america
+{
+    top: 150px;
+    left: 350px;
+    transform: rotate(-90deg);
+}
+.habitat-for-humanity
+{
+    bottom: 450px;
+    left: 50px;
+    transform: rotate(-180deg);
+}
+.united-way
+{
+    bottom: 150px;
+    right: 350px;
+    transform: rotate(-270deg);
+}
+.controls 
+{
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+.controls h3 
+{
+    margin: 15px 0;
+    color: #ffffff;
+}
+#up_button
+{
+    width: 15px;
+    cursor: pointer;
+}
+#down_button
+{
+    width: 15px;
+    cursor: pointer;
+}
+.overlay 
+{
+    width: 0;
+    height: 0;
+    border-top: 500px solid #ffffff;
+    border-right: 500px solid transparent;
+    border-bottom: 500px solid #ffffff;
+    border-left: 500px solid #ffffff;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+.login-main 
+{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-color: #40558D;
+}
+
+.top-bar
+{
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    height: 75px
+}
+
+.website-emblem img
+{
+    width: 50px;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.login-form
+{
+    position: relative;
+    top: 20px;
+    left: 30%;
+    width: 40%;
+    background-color: #fff;
+    border: 2px solid #444
+}
+
+.form-group
+{
+    padding-bottom: 15px;
+}
+
+.form-group label
+{
+    padding-right: 5px;
+}
+
+.login-form input[type="text"]
+{
+    margin-left: 5%;
+    margin-right: 50%;
+}
+
+.login-form input[type="submit"]
+{
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+
+.login-footer
+{
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 75px;
+    text-align: center;
+}
+
+.login-footer p
+{
+    position: relative;
+    top: 40px;
+}

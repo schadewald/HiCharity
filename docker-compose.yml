@@ -11,6 +11,7 @@ services:
       - "3000:3000"
     environment: 
       - USER_SERVICE_ENDPOINT=http://user:3000/
+      - DONATION_SERVICE_ENDPOINT=http://donation:3000/
       
   user: 
     image: user:1.0
