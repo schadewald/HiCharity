@@ -56,10 +56,10 @@ app.use("/users", (req, res) =>
 {
     console.log(`request made to: ${req.url}`);
     axios
-    .get(process.env.API_ENDPOINT + "users", { params: req.query })
-    .then((response) => res.send(response.data))
+    .get(process.env.API_ENDPOINT + "users/newuser")
+    .then((response) => homeController.repondWithHomePage)
     .catch((err) => console.log(err));
-    console.log("Something Happened.");
+    console.log("API Called From Front-End.");
 });
 app.use("/", homeController.repondWithHomePage);
 app.post("/", homeController.displayRequest);

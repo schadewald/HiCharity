@@ -70,7 +70,7 @@ module.exports =
     },
     new: (req, res) => 
     { 
-        res.render("views/users/new_user");
+        res.render("users/new_user");
     },
     login: (req, res) => 
     {
