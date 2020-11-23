@@ -8,7 +8,7 @@ const router = require("express").Router(),
 router.use("/users", userRoutes);
 router.use("/donations", donationRoutes);
 router.use("/api", apiRoutes);
-// router.use("/", homeRoutes);
+router.use("/", homeRoutes);
 router.use("/", errorRoutes);
 
 module.exports = router;

@@ -4,6 +4,7 @@ const homeController = require("./controllers/homeController");
 let express = require("express");
 let layouts = require("express-ejs-layouts");
 const app = express();
+const router = require("./routes/index");
 const methodOverride = require("method-override");
 const expressSession = require("express-session"),
     cookieParser = require("cookie-parser"),
@@ -52,17 +53,16 @@ app.use((req, res, next) =>
     next();
 });
 app.use(expressValidator());
-app.use("/users", (req, res) => 
-{
-    console.log(`request made to: ${req.url}`);
-    axios
-    .get(process.env.API_ENDPOINT + "users/newuser")
-    .then((response) => homeController.repondWithHomePage)
-    .catch((err) => console.log(err));
-    console.log("API Called From Front-End.");
-});
-app.use("/", homeController.repondWithHomePage);
-app.post("/", homeController.displayRequest);
+app.use("/", router);
+// app.use("/users", (req, res) => 
+// {
+//     console.log(`request made to: ${req.url}`);
+//     axios
+//     .get(process.env.API_ENDPOINT + `users${req.url}`)
+//     .then((response) => homeController.repondWithHomePage)
+//     .catch((err) => console.log(err));
+//     console.log("API Called From Front-End.");
+// });
 app.listen(port, () => 
 {
     console.log('Front-End started on http://localhost:8080; press Ctrl-C to terminate.');
