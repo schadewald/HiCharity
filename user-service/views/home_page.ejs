@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>Welcome to HiCharity!</title>
+        <link rel = "stylesheet" href = "../public/css/style.css">
+    </head>
+    <body>
+        <div class = "main">
+            <nav>
+                <div class = "navigation-links">
+                    <ul>
+                        <li><a href = "../users/newuser">
+                                New User
+                            </a></li>
+                        <li><a href = "../users/login">
+                                Login
+                            </a></li>
+                        <li><a href = "../donations/donate">
+                                Donate
+                            </a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class = "charity-preview">
+                <div class = "overlay">
+                </div>
+                <div class = "uwf-logo">
+                    <img src = "/views/assets/uwf_logo.png">
+                </div>
+                <div id = "circle">
+                    <div class = "charity-thumbnail salvation-army">
+                        <img src = "/views/assets/salvation_army_logo.png">
+                        <div>
+                            <h1>
+                                The Salvation Army
+                            </h1>
+                        </div>
+                    </div>
+                    <div class = "charity-thumbnail feeding-america">
+                        <img src = "/views/assets/feeding_america_logo.png">
+                        <div>
+                            <h1>
+                                Feeding America
+                            </h1>
+                        </div>
+                    </div>
+                    <div class = "charity-thumbnail habitat-for-humanity">
+                        <img src = "/views/assets/habitat_for_humanity_logo.png">
+                        <div>
+                            <h1>
+                                Habitat for Humanity
+                            </h1>
+                        </div>
+                    </div>
+                    <div class = "charity-thumbnail united-way">
+                        <img src = "/views/assets/united_way_logo.png">
+                        <div>
+                            <h1>
+                                United Way
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "controls">
+                <img src = "/views/assets/up_button.png" id = "up_button">
+                <h3>Charities</h3>
+                <img src = "/views/assets/down_button.png" id = "down_button">
+            </div>
+        </div>
+        <script>
+            var circle = document.getElementById("circle");
+            var up_button = document.getElementById("up_button");
+            var down_button = document.getElementById("down_button");
+            var rotateValue = circle.style.transform;
+            var rotateSum;
+
+            up_button.onclick = function() 
+            {
+                rotateSum = rotateValue + "rotate(-90deg)";
+                circle.style.transform = rotateSum;
+                rotateValue = rotateSum;
+            };
+            down_button.onclick = function() 
+            {
+                rotateSum = rotateValue + "rotate(90deg)";
+                circle.style.transform = rotateSum;
+                rotateValue = rotateSum;
+            };
+        </script>
+    </body>
+</html>

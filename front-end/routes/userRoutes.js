@@ -4,7 +4,7 @@ const axios = require("axios");
 
 router.use("/", (req, res) => 
 {
-    console.log(`request made to: ${req.url}`);
+    console.log(`Front-End request to API made to: ${req.url}`);
     axios
     .get(process.env.API_ENDPOINT + `users${req.url}`)
     .then((response) => console.log("API Called From Front-End User Route."))

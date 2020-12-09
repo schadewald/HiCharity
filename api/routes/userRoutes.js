@@ -4,9 +4,9 @@ const axios = require("axios");
 
 router.use("/", (req, res) => 
 {
-    console.log(`request made to: ${req.url}`);
+    console.log(`API request made to: ${req.url}`);
     axios
-    .get(process.env.API_ENDPOINT + `users${req.url}`)
+    .get(process.env.USER_SERVICE_ENDPOINT + `users${req.url}`)
     .then((response) => console.log("User Service Called From API User Route."))
     .catch((err) => console.log(err));
 });
@@ -32,4 +32,4 @@ router.use("/", (req, res) =>
     
 // router.delete("/:id/delete", userController.delete, userController.redirectView);
 
-// module.exports = router;
+module.exports = router;

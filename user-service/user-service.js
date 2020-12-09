@@ -45,7 +45,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.use((req, res, next) => 
 {
-    console.log(`request made to: ${req.url}`)
+    console.log(`User-Service received a request made to: ${req.url}`)
     next();
 });
 app.use(expressValidator());
