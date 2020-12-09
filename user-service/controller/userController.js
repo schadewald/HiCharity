@@ -74,7 +74,7 @@ module.exports =
     },
     login: (req, res) => 
     {
-        res.render("views/users/login_user");
+        res.render("../views/users/login_user");
     },
     authenticate: passport.authenticate("local", 
     {
