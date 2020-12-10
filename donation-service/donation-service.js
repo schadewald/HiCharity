@@ -2,7 +2,6 @@ const port = 3000;
 let express = require("express");
 const app = express();
 const router = require("./routes/index");
-app.use(cors());
 app.use((req, res, next) => 
 {
     res.locals.flashMessages = req.flash();
@@ -20,5 +19,5 @@ app.use((req, res, next) =>
 app.use("/", router);
 app.listen(port, () => 
 {
-    console.log('Express started on http://localhost:8080; press Ctrl-C to terminate.');
+    console.log('Donation-Service started.');
 });

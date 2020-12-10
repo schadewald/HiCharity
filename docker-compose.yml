@@ -4,6 +4,7 @@ services:
   api:
     depends_on: 
       - user
+      - donation
       
     image: api:1.0
     build: ./api
@@ -18,6 +19,12 @@ services:
     build: ./user-service
     ports: 
       - "3050:3000"
+
+  donation:
+    image: donation:1.0
+    build: ./donation-service
+    ports:
+      - "3100:3000"
   
   client:
     depends_on:
