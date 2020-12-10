@@ -134,7 +134,7 @@ module.exports =
         User.findById(userId)
             .then(user => 
                 {
-                    res.render("views/users/edit", 
+                    res.render("../views/users/edit", 
                     {
                         user: user
                     });
@@ -223,7 +223,7 @@ module.exports =
         }
         else 
         {
-            res.render("views/users/index");
+            res.render("../views/users/index");
         }
     },
     show: (req, res, next) => 
@@ -243,6 +243,6 @@ module.exports =
     },
     showView: (req, res) => 
     {
-        res.render("views/users/show");
+        res.render("../views/users/show");
     }
 };
