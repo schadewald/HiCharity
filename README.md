@@ -1,5 +1,4 @@
-# CEN4053-Group7
-Group 7 Semester Project for CEN 4053
+# HiCharity
 
 This Project is a donation website for making and tracking charitable donations.
 
